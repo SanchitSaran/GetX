@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/getController.dart';
 import 'package:flutter_getx/homepagesecond.dart';
 import 'package:get/get.dart';
 
-
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
+  CounterGET counterGET = Get.put(CounterGET(),tag: 'count');
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,22 +21,29 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 22),
                 ),
                 MaterialButton(
-                  height: 20,child: Text('send'),
+                  height: 20,
+                  child: Text('send'),
                   textColor: Colors.black,
                   color: Colors.red,
                   onPressed: () {
-                  Get.to(HomePageSecond());
+                    Get.to(HomePageSecond());
                   },
-                ),MaterialButton(
-                  height: 20,child: Text('snack'),
+                ),
+                MaterialButton(
+                  height: 20,
+                  child: Text('snack'),
                   textColor: Colors.black,
                   color: Colors.red,
                   onPressed: () {
-                  Get.snackbar('tile', 'getXisFun',backgroundColor: Colors.black
-                  ,snackPosition: SnackPosition.BOTTOM,colorText: Colors.white54);
+                    Get.snackbar('tile', 'getXisFun',
+                        backgroundColor: Colors.black,
+                        snackPosition: SnackPosition.BOTTOM,
+                        colorText: Colors.white54);
                   },
-                ),MaterialButton(
-                  height: 20,child: Text('dialog'),
+                ),
+                MaterialButton(
+                  height: 20,
+                  child: Text('dialog'),
                   textColor: Colors.black,
                   color: Colors.red,
                   onPressed: () {

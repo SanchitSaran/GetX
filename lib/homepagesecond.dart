@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/getController.dart';
+import 'package:get/get.dart';
 
-class HomePageSecond extends StatefulWidget {
-  const HomePageSecond({Key key}) : super(key: key);
+class HomePageSecond extends StatelessWidget {
+  CounterGET counterGET = Get.find(tag: 'count');
 
-  @override
-  _HomePageSecondState createState() => _HomePageSecondState();
-}
-
-class _HomePageSecondState extends State<HomePageSecond> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,7 +13,26 @@ class _HomePageSecondState extends State<HomePageSecond> {
           title: Text('Second'),
         ),
         body: Container(
-          child: Text('hi second'),
+          child: Center(
+              child: GetBuilder<CounterGET>(
+                  init: counterGET,
+                  builder: (controll) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          controll.count.toString(),
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        RaisedButton(
+                            child: Text('Go'),
+                            onPressed: () {
+                              //we will call our incremnet method here
+                              controll.increment();
+                            })
+                      ],
+                    );
+                  })),
         ),
       ),
     );
